@@ -4,8 +4,15 @@ on:
   push:
     branches:
       - main
-    paths-ignore:
-      - "dist/**"
+    paths:
+      - "src/**"
+      - "public/**"
+      - "index.html"
+      - "package.json"
+      - "pnpm-lock.yaml"
+      - "vite.config.js"
+      - "tsconfig.json"
+      - "tsconfig.node.json"
 
 permissions:
   contents: write
