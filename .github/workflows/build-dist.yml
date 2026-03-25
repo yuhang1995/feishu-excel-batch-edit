@@ -1,0 +1,58 @@
+name: Build Dist
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - "dist/**"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-dist-main
+  cancel-in-progress: true
+
+jobs:
+  build-dist:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm run build
+
+      - name: Detect dist changes
+        id: dist_changes
+        run: |
+          if [ -n "$(git status --porcelain -- dist)" ]; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Commit dist changes
+        if: steps.dist_changes.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dist
+          git commit -m "chore(ci): update dist"
+          git push origin HEAD:main
