@@ -1,8 +1,8 @@
 {
-  "name": "react-emplate",
+  "name": "feishu-excel-batch-edit",
   "version": "1.0.0",
   "type": "module",
-  "description": "React TypeScript on Replit, using Vite bundler",
+  "description": "飞书多维表格批量编辑插件",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",

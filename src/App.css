@@ -3,10 +3,73 @@
 .main {
   padding: 1.5rem 1rem 1rem;
 }
+
 .main h4 {
   font-size: calc(1.275rem + 0.3vw);
+  margin-bottom: 1rem;
 }
-.main code {
-  color: #d63384;
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+
+.record-select-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.filter-conditions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.filter-condition-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.filter-condition-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgba(28, 31, 35, 0.62);
+}
+
+.filter-input-area {
+  flex: 1 1 18rem;
+  min-width: 18rem;
+}
+
+.helper-text {
+  color: rgba(28, 31, 35, 0.62);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.complex-editor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 0.75rem;
+}
+
+.object-editor {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.object-property-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  border: 1px solid rgba(28, 31, 35, 0.08);
+  border-radius: 0.75rem;
+  background: rgba(247, 248, 250, 0.75);
+}
+
+.object-property-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: rgba(28, 31, 35, 0.88);
 }
